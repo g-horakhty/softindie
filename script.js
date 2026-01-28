@@ -87,6 +87,8 @@ let calcExpression = '';
 window.calcInput = function(val) {
     const display = document.getElementById('calc-display');
     if(display) {
+        // Evita múltiplos zeros no início
+        if (calcExpression === '0' && val === '0') return;
         calcExpression += val; 
         display.value = calcExpression;
     }
@@ -94,8 +96,14 @@ window.calcInput = function(val) {
 
 window.calcOp = function(op) {
     const display = document.getElementById('calc-display');
-    if(display) {
-        calcExpression += op; 
+    if(display && calcExpression.length > 0) {
+        const lastChar = calcExpression.slice(-1);
+        // Se o último caractere já for um operador, substitui pelo novo
+        if (['+', '-', '*', '/'].includes(lastChar)) {
+            calcExpression = calcExpression.slice(0, -1) + op;
+        } else {
+            calcExpression += op;
+        }
         display.value = calcExpression;
     }
 };
@@ -124,6 +132,45 @@ window.calcResult = function() {
 };
 
 /* ================= JOGO: CAMPO MINADO ================= */
+// Adicione esta variável no topo da seção do Campo Minado
+let isFlagMode = false; 
+
+// Função para alternar modo bandeira (Chamada pelo novo botão no HTML)
+window.toggleFlagMode = function() {
+    isFlagMode = !isFlagMode;
+    const btn = document.getElementById('btn-flag-mode');
+    if(btn) {
+        btn.style.background = isFlagMode ? '#ff6b6b' : '#e0e0e0';
+        btn.style.color = isFlagMode ? 'white' : 'black';
+    }
+}
+
+window.clickMine = function(square) {
+    if (isGameOverMines) return;
+    if (square.classList.contains('revealed')) return;
+
+    // Lógica para Celular: Se o modo bandeira estiver ativo, coloca bandeira ao clicar
+    if (isFlagMode) {
+        addFlag(square);
+        return;
+    }
+
+    if (square.classList.contains('flag')) return; // Não revela se tiver bandeira
+
+    if (square.dataset.type === 'bomb') {
+        gameOverMines();
+    } else {
+        let total = square.getAttribute('data');
+        if (total != 0) {
+            square.classList.add('revealed');
+            square.innerHTML = total;
+            square.style.color = getNumberColor(total);
+            return;
+        }
+        checkSquare(square, parseInt(square.id));
+    }
+    square.classList.add('revealed');
+}
 const gridMines = document.getElementById("mines-grid"); // Renomeado para evitar conflito
 const width = 9;
 const bombAmount = 10;
@@ -321,11 +368,17 @@ document.addEventListener('keydown', (event) => {
 
 function checkCollision() {
     if(!cactus || !dino) return;
-    let cactusLeft = parseInt(window.getComputedStyle(cactus).getPropertyValue("left"));
-    let dinoBottom = parseInt(window.getComputedStyle(dino).getPropertyValue("bottom"));
 
-    // Ajuste de colisão
-    if(cactusLeft > 5 && cactusLeft < 35 && dinoBottom < 30) {
+    // getBoundingClientRect é muito mais preciso para responsividade
+    const dinoRect = dino.getBoundingClientRect();
+    const cactusRect = cactus.getBoundingClientRect();
+
+    // Verifica sobreposição dos retângulos
+    if (
+        dinoRect.right > cactusRect.left + 10 && // Margem de tolerância
+        dinoRect.left < cactusRect.right - 10 &&
+        dinoRect.bottom > cactusRect.top + 10    // Verifica se o gato está baixo o suficiente para bater
+    ) {
         window.stopDino();
         if(gameOverMsg) gameOverMsg.style.display = 'block';
     }
