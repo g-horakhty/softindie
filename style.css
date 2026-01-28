@@ -158,7 +158,55 @@ body {
 }
 
 .window.large { width: 650px; height: 550px; } 
-.window.small { width: 300px; height: auto; }
+.window.small { 
+    width: 340px; /* Era 300px. Aumentado para acomodar o grid */
+    height: auto; 
+}
+
+/* 2. Centralize o container do jogo */
+.mines-container {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 2px;
+    background: #8b9bb4;
+    padding: 2px;
+    width: fit-content; 
+    margin: 0 auto;     
+    border: 2px solid #555;
+}
+
+/* 3. Estilo das Células (Mantido, mas confirmo para garantir) */
+.mine-cell {
+    width: 30px;
+    height: 30px;
+    background: #c6c6c6;
+    border: 2px outset #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 1.2rem;
+    user-select: none;
+}
+
+/* 4. Ajuste Mobile (Garante que não quebre em celulares) */
+@media (max-width: 768px) {
+    .window.small {
+        width: 95% !important; /* No celular ocupa quase toda a tela */
+        max-width: 350px;      /* Mas não fica gigante */
+    }
+    
+    /* Se a tela for MUITO pequena, reduz um pouco a célula */
+    @media (max-width: 360px) {
+        .mine-cell {
+            width: 28px;
+            height: 28px;
+            font-size: 1rem;
+        }
+    }
+}
 
 .title-bar {
     padding: 8px;
