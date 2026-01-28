@@ -339,3 +339,130 @@ body {
 .retro-btn.small {
     font-size: 1rem; padding: 8px; margin-top: 10px;
 }
+
+/* ================= CORREÇÃO CALCULADORA ================= */
+.calc-body {
+    padding: 10px;
+    background: #f0f0f0;
+}
+
+#calc-display {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+    text-align: right;
+    background: #9bbc0f;
+    border: 2px inset #eee;
+    color: #0f380f;
+    padding: 0 5px;
+}
+
+.calc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.calc-grid button {
+    padding: 15px 0;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background: #e0e0e0;
+    border: 1px solid #999;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.calc-grid button:active {
+    background: #ccc;
+    transform: translateY(2px);
+}
+
+.calc-grid button:nth-child(4n) { /* Operadores */
+    background: var(--accent-orange);
+    color: white;
+    border: 1px solid #d4884d;
+}
+
+/* ================= CORREÇÃO CAMPO MINADO ================= */
+.mines-container {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr); /* 9 Colunas fixas */
+    gap: 2px;
+    background: #8b9bb4;
+    padding: 2px;
+    width: fit-content;
+    margin: 0 auto;
+    border: 2px solid #555;
+}
+
+.mine-cell {
+    width: 30px;
+    height: 30px;
+    background: #c6c6c6;
+    border: 2px outset #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 1.2rem;
+    user-select: none; /* Impede seleção de texto ao clicar rápido */
+}
+
+.mine-cell:active { border: 2px inset #fff; }
+
+.mine-cell.revealed {
+    border: 1px solid #999;
+    background: #dcdcdc;
+}
+
+.mine-cell.bomb { background: #ff6b6b; }
+.mine-cell.flag { color: red; }
+
+/* ================= RESPONSIVIDADE (SMARTPHONES) ================= */
+@media (max-width: 768px) {
+    /* Ajuste Geral do Desktop */
+    .desktop {
+        padding: 20px 10px;
+        justify-content: center; /* Centraliza ícones */
+        gap: 15px;
+    }
+
+    .desktop-icon { width: 80px; }
+    .icon-graphic { width: 60px; height: 60px; font-size: 2rem; }
+    .icon-label { font-size: 0.9rem; }
+
+    /* Janelas Adaptáveis */
+    .window, .window.large, .window.small {
+        width: 95% !important; /* Força largura total */
+        max-height: 85vh; /* Evita que a janela passe do topo/base */
+        height: auto;
+    }
+
+    .window-content {
+        padding: 15px;
+    }
+
+    /* Esconder o logo adesivo no mobile para liberar espaço */
+    .sticker-logo-bottom-right {
+        display: none;
+    }
+
+    /* Ajuste do Menu Iniciar */
+    .start-menu {
+        bottom: 55px;
+        left: 5px;
+        width: 90%;
+    }
+
+    /* Ajuste dos Games no Mobile */
+    .mine-cell {
+        width: 32px; /* Um pouco maior para o dedo */
+        height: 32px;
+    }
+}
