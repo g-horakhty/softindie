@@ -33,9 +33,7 @@ body {
     position: relative;
 }
 
-/* --- NOVAS ANIMAÇÕES --- */
-
-/* 1. Ampulheta Girando (Horas) */
+/* --- ANIMAÇÕES --- */
 @keyframes spin {
     0% { transform: rotate(0deg); }
     25% { transform: rotate(180deg); }
@@ -51,7 +49,6 @@ body {
     font-size: 1rem;
 }
 
-/* 2. Movimento de Flutuar (Para o Logo e Gatinho) */
 @keyframes float {
     0% { transform: translateY(0px) rotate(-2deg); }
     50% { transform: translateY(-10px) rotate(-2deg); }
@@ -62,8 +59,7 @@ body {
     animation: float 4s ease-in-out infinite;
 }
 
-/* --- FIM DAS NOVAS ANIMAÇÕES --- */
-
+/* --- DESKTOP --- */
 .desktop {
     display: flex;
     flex-wrap: wrap;
@@ -114,6 +110,7 @@ body {
     word-wrap: break-word;
 }
 
+/* --- LOGO FLUTUANTE --- */
 .sticker-logo-bottom-right {
     position: absolute;
     bottom: 70px;
@@ -122,7 +119,6 @@ body {
     padding: 15px 25px;
     border: var(--border-width) solid var(--stroke-color);
     box-shadow: var(--shadow);
-    /* A rotação agora é controlada pela animação .float-anim */
     z-index: 50;
     pointer-events: none;
 }
@@ -133,8 +129,6 @@ body {
     gap: 15px;
 }
 
-.logo-icon-large { font-size: 3rem; }
-
 .sticker-logo-bottom-right h1 {
     margin: 0; font-size: 1.8rem; line-height: 1;
 }
@@ -143,6 +137,7 @@ body {
     margin: 5px 0 0 0; font-size: 0.9rem; opacity: 0.8; font-family: 'VT323', monospace;
 }
 
+/* --- JANELAS --- */
 .window {
     position: absolute;
     top: 50%; left: 50%;
@@ -158,55 +153,10 @@ body {
 }
 
 .window.large { width: 650px; height: 550px; } 
-.window.small { 
-    width: 340px; /* Era 300px. Aumentado para acomodar o grid */
-    height: auto; 
-}
+.window.small { width: 300px; height: auto; }
 
-/* 2. Centralize o container do jogo */
-.mines-container {
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    gap: 2px;
-    background: #8b9bb4;
-    padding: 2px;
-    width: fit-content; 
-    margin: 0 auto;     
-    border: 2px solid #555;
-}
-
-/* 3. Estilo das Células (Mantido, mas confirmo para garantir) */
-.mine-cell {
-    width: 30px;
-    height: 30px;
-    background: #c6c6c6;
-    border: 2px outset #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-weight: bold;
-    font-family: monospace;
-    font-size: 1.2rem;
-    user-select: none;
-}
-
-/* 4. Ajuste Mobile (Garante que não quebre em celulares) */
-@media (max-width: 768px) {
-    .window.small {
-        width: 95% !important; /* No celular ocupa quase toda a tela */
-        max-width: 350px;      /* Mas não fica gigante */
-    }
-    
-    /* Se a tela for MUITO pequena, reduz um pouco a célula */
-    @media (max-width: 360px) {
-        .mine-cell {
-            width: 28px;
-            height: 28px;
-            font-size: 1rem;
-        }
-    }
-}
+/* FIX: Campo Minado precisa ser mais largo para caber a grade */
+#app-mines { width: 360px !important; }
 
 .title-bar {
     padding: 8px;
@@ -246,6 +196,7 @@ body {
 }
 .retro-btn:hover { background: #444; transform: translateY(-2px); box-shadow: 2px 2px 0 rgba(0,0,0,0.2);}
 
+/* --- TASKBAR --- */
 .taskbar {
     position: fixed; bottom: 0; left: 0; width: 100%;
     height: 50px;
@@ -285,7 +236,7 @@ body {
     border: 2px solid var(--stroke-color);
     padding: 5px 10px;
     font-family: 'VT323'; font-size: 1.2rem;
-    display: flex; align-items: center; /* Para alinhar ampulheta e texto */
+    display: flex; align-items: center;
 }
 
 .start-menu {
@@ -316,13 +267,17 @@ body {
     border: 1px solid var(--stroke-color);
 }
 
-/* GAMES & EXTRAS */
+/* --- ESTILO GAME BOY (Base) --- */
 .game-boy-style .game-screen {
     padding: 10px;
     background: #9bbc0f;
     border: 3px inset rgba(0,0,0,0.2);
     font-family: 'VT323';
     color: #0f380f;
+    /* FIX: Centraliza tudo dentro da tela do jogo */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
 }
 
 .lcd-header {
@@ -332,63 +287,10 @@ body {
     margin-bottom: 5px;
     font-weight: bold;
     font-size: 1.2rem;
+    width: 100%; /* Garante que o header ocupe a largura toda */
 }
 
-.dino-container {
-    position: relative;
-    width: 100%; height: 120px;
-    border-bottom: 4px solid #0f380f;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.1);
-}
-
-#dino {
-    position: absolute;
-    bottom: 0; left: 10px;
-    font-size: 35px;
-    width: 35px; height: 35px;
-    display: flex; align-items: flex-end;
-}
-
-.animate-jump { animation: jump 0.6s ease-in-out; }
-
-@keyframes jump {
-    0% { bottom: 0; }
-    40% { bottom: 60px; }
-    60% { bottom: 60px; }
-    100% { bottom: 0; }
-}
-
-#cactus {
-    position: absolute;
-    bottom: 0; left: 280px;
-    font-size: 25px;
-}
-
-.cactus-move { animation: moveCactus 1.5s infinite linear; }
-
-@keyframes moveCactus {
-    0% { left: 280px; }
-    100% { left: -30px; }
-}
-
-#game-over-msg {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    background: #0f380f; color: #9bbc0f;
-    padding: 5px 10px;
-    display: none;
-    font-size: 1.5rem;
-    border: 2px solid #9bbc0f;
-    white-space: nowrap;
-}
-
-.retro-btn.small {
-    font-size: 1rem; padding: 8px; margin-top: 10px;
-}
-
-/* ================= CORREÇÃO CALCULADORA ================= */
+/* --- CALCULADORA (CORREÇÃO DE GRADE) --- */
 .calc-body {
     padding: 10px;
     background: #f0f0f0;
@@ -424,26 +326,18 @@ body {
     transition: background 0.2s;
 }
 
-.calc-grid button:active {
-    background: #ccc;
-    transform: translateY(2px);
-}
+.calc-grid button:active { background: #ccc; transform: translateY(2px); }
+.calc-grid button:nth-child(4n) { background: var(--accent-orange); color: white; border: 1px solid #d4884d; }
 
-.calc-grid button:nth-child(4n) { /* Operadores */
-    background: var(--accent-orange);
-    color: white;
-    border: 1px solid #d4884d;
-}
-
-/* ================= CORREÇÃO CAMPO MINADO ================= */
+/* --- CAMPO MINADO (CORREÇÃO TOTAL) --- */
 .mines-container {
     display: grid;
-    grid-template-columns: repeat(9, 1fr); /* 9 Colunas fixas */
+    grid-template-columns: repeat(9, 1fr);
     gap: 2px;
     background: #8b9bb4;
     padding: 2px;
     width: fit-content;
-    margin: 0 auto;
+    margin: 0; /* Centralização feita pelo pai .game-screen */
     border: 2px solid #555;
 }
 
@@ -452,65 +346,83 @@ body {
     height: 30px;
     background: #c6c6c6;
     border: 2px outset #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     cursor: pointer;
-    font-weight: bold;
-    font-family: monospace;
-    font-size: 1.2rem;
-    user-select: none; /* Impede seleção de texto ao clicar rápido */
+    font-weight: bold; font-family: monospace; font-size: 1.2rem;
+    user-select: none;
 }
 
 .mine-cell:active { border: 2px inset #fff; }
-
-.mine-cell.revealed {
-    border: 1px solid #999;
-    background: #dcdcdc;
-}
-
+.mine-cell.revealed { border: 1px solid #999; background: #dcdcdc; }
 .mine-cell.bomb { background: #ff6b6b; }
 .mine-cell.flag { color: red; }
 
-/* ================= RESPONSIVIDADE (SMARTPHONES) ================= */
-@media (max-width: 768px) {
-    /* Ajuste Geral do Desktop */
-    .desktop {
-        padding: 20px 10px;
-        justify-content: center; /* Centraliza ícones */
-        gap: 15px;
-    }
+/* Botão Modo Bandeira no Mobile */
+#btn-flag-mode {
+    width: 100%;
+    max-width: 294px; /* Mesma largura da grade para alinhar */
+    margin-bottom: 5px;
+}
 
+/* --- GATINHO RUN --- */
+.dino-container {
+    position: relative;
+    width: 100%; height: 120px;
+    border-bottom: 4px solid #0f380f;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#dino {
+    position: absolute; bottom: 0; left: 10px;
+    font-size: 35px; width: 35px; height: 35px;
+    display: flex; align-items: flex-end;
+}
+
+.animate-jump { animation: jump 0.6s ease-in-out; }
+@keyframes jump {
+    0% { bottom: 0; } 40% { bottom: 60px; }
+    60% { bottom: 60px; } 100% { bottom: 0; }
+}
+
+#cactus {
+    position: absolute; bottom: 0; left: 280px;
+    font-size: 25px;
+}
+
+.cactus-move { animation: moveCactus 1.5s infinite linear; }
+@keyframes moveCactus {
+    0% { left: 280px; } 100% { left: -30px; }
+}
+
+#game-over-msg {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: #0f380f; color: #9bbc0f;
+    padding: 5px 10px; display: none;
+    font-size: 1.5rem; border: 2px solid #9bbc0f;
+    white-space: nowrap;
+}
+
+.retro-btn.small { font-size: 1rem; padding: 8px; margin-top: 10px; width: 100%; }
+
+/* --- RESPONSIVIDADE (MOBILE) --- */
+@media (max-width: 768px) {
+    .desktop { padding: 20px 10px; justify-content: center; gap: 15px; }
     .desktop-icon { width: 80px; }
     .icon-graphic { width: 60px; height: 60px; font-size: 2rem; }
-    .icon-label { font-size: 0.9rem; }
+    .sticker-logo-bottom-right { display: none; }
 
-    /* Janelas Adaptáveis */
-    .window, .window.large, .window.small {
-        width: 95% !important; /* Força largura total */
-        max-height: 85vh; /* Evita que a janela passe do topo/base */
+    .window, .window.large, .window.small, #app-mines {
+        width: 95% !important;
+        max-width: 400px;
         height: auto;
+        max-height: 85vh;
     }
 
-    .window-content {
-        padding: 15px;
-    }
-
-    /* Esconder o logo adesivo no mobile para liberar espaço */
-    .sticker-logo-bottom-right {
-        display: none;
-    }
-
-    /* Ajuste do Menu Iniciar */
-    .start-menu {
-        bottom: 55px;
-        left: 5px;
-        width: 90%;
-    }
-
-    /* Ajuste dos Games no Mobile */
-    .mine-cell {
-        width: 32px; /* Um pouco maior para o dedo */
-        height: 32px;
+    /* Reduz um pouco a célula se a tela for muito pequena */
+    @media (max-width: 360px) {
+        .mine-cell { width: 28px; height: 28px; font-size: 1rem; }
+        #app-mines { width: 100% !important; }
     }
 }
