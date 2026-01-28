@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2026 Gabriel Horakhty / SoftIndie.
+ * Todos os direitos reservados.
+ * * Este código é confidencial e proprietário.
+ * A cópia não autorizada deste arquivo, via qualquer meio, é estritamente proibida.
+ */
 /* ================= GERENCIAMENTO DE JANELAS ================= */
 let zIndexCounter = 100;
 
