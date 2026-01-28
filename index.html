@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SoftIndie OS | Gabriel Horakhty</title>
+    <title>SoftIndie </title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=VT323&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -133,15 +133,20 @@
     </div>
 
     <div id="app-mines" class="window small game-boy-style">
-        <div class="title-bar green"><span class="title">💣 Campo Minado</span><button class="btn-close" onclick="closeWindow('app-mines')">X</button></div>
-        <div class="game-screen">
-            <div class="lcd-header">
-                <span id="mines-score">BOMBAS: 10</span>
-                <button class="btn-reset" onclick="initMinesweeper()">😐</button>
-            </div>
-            <div class="lcd-display mines-container" id="mines-grid"></div>
+    <div class="title-bar green"><span class="title">💣 Campo Minado</span><button class="btn-close" onclick="closeWindow('app-mines')">X</button></div>
+    <div class="game-screen">
+        <div class="lcd-header">
+            <span id="mines-score">BOMBAS: 10</span>
+            <button class="btn-reset" onclick="initMinesweeper()">😐</button>
         </div>
+        
+        <button id="btn-flag-mode" onclick="toggleFlagMode()" style="width: 100%; margin-bottom: 5px; cursor: pointer; border: 1px solid #333; font-family: 'VT323';">
+            🚩 Modo Bandeira: OFF
+        </button>
+        
+        <div class="lcd-display mines-container" id="mines-grid"></div>
     </div>
+</div>
 
     <div id="app-dino" class="window small game-boy-style">
         <div class="title-bar green"><span class="title">🐱 Gatinho Run</span><button class="btn-close" onclick="closeWindow('app-dino')">X</button></div>
