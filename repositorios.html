@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoftIndie | Project Famous</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos exclusivos desta página */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: auto; /* Permite rolagem se necessário */
+        }
+
+        .container-secreto {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #0f0;
+            padding: 40px;
+            max-width: 800px;
+            width: 90%;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+        }
+
+        h1 { color: #0f0; font-family: 'VT323', monospace; font-size: 3rem; margin-bottom: 10px; }
+        h2 { color: var(--accent-teal); font-family: 'VT323', monospace; margin-top: 0; }
+        
+        p { font-family: 'Fredoka', sans-serif; font-size: 1.2rem; color: #ddd; margin-bottom: 30px; }
+
+        .links-list { list-style: none; padding: 0; }
+        .links-list li { margin: 15px 0; }
+        
+        .links-list a {
+            font-family: 'VT323', monospace;
+            font-size: 1.5rem;
+            color: #0f0;
+            text-decoration: none;
+            border: 1px solid #0f0;
+            padding: 10px 20px;
+            display: inline-block;
+            transition: all 0.3s;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .links-list a:hover {
+            background: #0f0;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        /* --- EFEITO LETRAS DANÇANDO --- */
+        .dancing-text span {
+            display: inline-block;
+            animation: dance 0.5s infinite alternate ease-in-out;
+        }
+
+        @keyframes dance {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); text-shadow: 0 5px 5px rgba(0,0,0,0.5); }
+        }
+
+        .btn-voltar {
+            margin-top: 40px;
+            background: transparent;
+            border: none;
+            color: #ff6b6b;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-secreto">
+        <h1 class="dancing-text">SoftIndie Repositories</h1>
+        <h2 class="dancing-text">Codename: FAMOUS (FreeRTOS)</h2>
+
+        <p>
+            Devido a reestruturações internas e ao desenvolvimento do novo projeto baseado em FreeRTOS,
+            o acesso direto foi movido para esta área segura.
+        </p>
+
+        <button class="btn-voltar" onclick="window.location.href='index.html'">Voltar para SoftIndie OS</button>
+    </div>
+
+    <script>
+        // Script para fazer as letras dançarem individualmente
+        document.querySelectorAll('.dancing-text').forEach(element => {
+            const text = element.innerText;
+            element.innerHTML = ''; // Limpa o texto original
+            
+            // Recria letra por letra envolvida em <span>
+            for (let i = 0; i < text.length; i++) {
+                const span = document.createElement('span');
+                span.innerText = text[i] === ' ' ? '\u00A0' : text[i]; // Preserva espaços
+                
+                // Adiciona um atraso aleatório ou sequencial para o efeito "onda"
+                span.style.animationDelay = (i * 0.1) + 's';
+                
+                element.appendChild(span);
+            }
+        });
+    </script>
+</body>
+</html>

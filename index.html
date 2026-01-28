@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoftIndie OS | Gabriel Horakhty</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main class="desktop" id="desktop-area">
+        <div class="desktop-icon" onclick="openWindow('win-lua')">
+            <div class="icon-graphic globe-icon">🌎</div><span class="icon-label">Navegador_Lua</span>
+        </div>
+        <div class="desktop-icon" onclick="openWindow('win-random')">
+            <div class="icon-graphic doc-icon">📝</div><span class="icon-label">Avaliador_Random.exe</span>
+        </div>
+        <div class="desktop-icon" onclick="openWindow('win-damas')">
+            <div class="icon-graphic game-icon">🏁</div><span class="icon-label">Damas_Web.html</span>
+        </div>
+        <div class="desktop-icon" onclick="openWindow('win-kilie')">
+            <div class="icon-graphic robot-icon">🤖</div><span class="icon-label">Project_Kilie</span>
+        </div>
+        <div class="desktop-icon" onclick="openWindow('win-services')">
+            <div class="icon-graphic folder-icon">ℹ️</div><span class="icon-label">Sobre SoftIndie</span>
+        </div>
+    </main>
+
+    <div class="sticker-logo-bottom-right float-anim">
+        <div class="logo-content">
+            <img src="softindie.png" alt="Logo SoftIndie" style="width: 60px; height: auto; margin-right: 15px;">
+            <div>
+                <h1>SoftIndie</h1>
+                <p>Criado e desenvolvido por Gabriel Horakhty 2026. Todos direitos reservados.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="win-lua" class="window large">
+        <div class="title-bar blue"><span class="title">🌎 Navegador Lua</span><button class="btn-close" onclick="closeWindow('win-lua')">X</button></div>
+        <div class="window-content scrollable detail-text">
+            <h2>Projeto Experimental de Navegador Web</h2>
+            <p>O Navegador-Lua é um projeto experimental em desenvolvimento, idealizado para explorar tecnologias de renderização e interfaces gráficas. É um esforço aberto, criado com tecnologias tradicionais como <strong>C</strong>, <strong>GTK/Glade</strong> para a interface e <strong>WebKit</strong> para o motor de renderização.</p>
+            <p>O objetivo não é apenas "construir mais um navegador", mas criar um espaço de aprendizado onde ideias podem ser testadas. O projeto está licenciado sob a <strong>GNU GPL v3.0</strong>.</p>
+            <h3>✨ Destaques</h3>
+            <ul>
+                <li>Integração entre interface gráfica (GTK) e WebKit.</li>
+                <li>Estrutura em C para alta performance.</li>
+                <li>Foco em otimização para hardware limitado.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="win-random" class="window large">
+        <div class="title-bar orange"><span class="title">📝 Avaliador Random</span><button class="btn-close" onclick="closeWindow('win-random')">X</button></div>
+        <div class="window-content scrollable detail-text">
+            <h2>Gerador de Avaliações Automatizado</h2>
+            <p>O Avaliador-Random é uma ferramenta prática para educadores, desenvolvida em <strong>C# sobre .NET 8</strong>. O sistema permite criar bancos de questões (múltipla escolha ou dissertativas) e gerar provas completas em PDF automaticamente.</p>
+            <h3>✨ Funcionalidades</h3>
+            <ul>
+                <li>📄 Geração de PDFs profissionais prontos para impressão.</li>
+                <li>🎯 Randomização de questões para evitar "cola".</li>
+                <li>🧠 Suporte a imagens nas perguntas.</li>
+                <li>💻 Interface desktop intuitiva (WinForms).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="win-damas" class="window large">
+        <div class="title-bar green"><span class="title">🏁 Damas em HTML</span><button class="btn-close" onclick="closeWindow('win-damas')">X</button></div>
+        <div class="window-content scrollable detail-text">
+            <h2>Jogo Completo em Arquivo Único</h2>
+            <p>O damas-html é um projeto educativo que traz um jogo completo de damas implementado em um <strong>único arquivo HTML</strong>. Sem instalações, sem dependências. Basta abrir e jogar.</p>
+            <p>Inclui uma Inteligência Artificial baseada no algoritmo <strong>Minimax com poda Alpha-Beta</strong>, oferecendo um desafio real.</p>
+            <h3>✨ Características</h3>
+            <ul>
+                <li>🕹️ Totalmente offline e portátil.</li>
+                <li>🤖 IA desafiadora ajustável.</li>
+                <li>📚 Código limpo para estudo de lógica de jogos.</li>
+            </ul>
+            <button class="retro-btn" onclick="window.location.href='repositorios.html'">Acessar Repositório</button>
+        </div>
+    </div>
+
+    <div id="win-kilie" class="window large">
+        <div class="title-bar purple"><span class="title">🤖 Projeto Kilie</span><button class="btn-close" onclick="closeWindow('win-kilie')">X</button></div>
+        <div class="window-content scrollable detail-text">
+            <h2>Robótica Acessível e Interativa</h2>
+            <p>O Kilie é um robô de mesa interativo inspirado no <em>Eilik</em>, mas construído com componentes acessíveis como <strong>ESP32</strong>, servos e displays OLED. O objetivo é trazer a "robótica emocional" para a realidade maker brasileira.</p>
+            <h3>🎯 O que ele faz?</h3>
+            <ul>
+                <li>❤️ Simula emoções (alegria, tédio, curiosidade).</li>
+                <li>👀 "Olha" e interage com o ambiente.</li>
+                <li>🎮 Possui mini-jogos integrados no visor.</li>
+                <li>⏰ Funciona como assistente (timer/alarme).</li>
+            </ul>
+            <p>Licenciado sob <strong>AGPL-3.0</strong>.</p>
+        </div>
+    </div>
+
+    <div id="win-services" class="window">
+        <div class="title-bar"><span class="title">ℹ️ Sobre SoftIndie</span><button class="btn-close" onclick="closeWindow('win-services')">X</button></div>
+        <div class="window-content detail-text" style="text-align: center;">
+            <img src="softindie.png" alt="Logo SoftIndie" style="max-width: 150px; margin-bottom: 15px;">
+            <h2>SoftIndie</h2>
+            <p>Desenvolvimento de software independente.</p>
+            <p><strong>Contato Oficial:</strong></p>
+            <div style="background: #e0e0e0; padding: 10px; border-radius: 5px; font-family: 'VT323', monospace; font-size: 1.2rem;">
+                <a href="mailto:gabriel@softindie.com" style="color: #333; text-decoration: none;">gabriel@softindie.com</a>
+            </div>
+            <button class="retro-btn" onclick="closeWindow('win-services')">Fechar</button>
+        </div>
+    </div>
+
+    <div id="app-calc" class="window small">
+        <div class="title-bar"><span class="title">🧮 Calc</span><button class="btn-close" onclick="closeWindow('app-calc')">X</button></div>
+        <div class="calc-body">
+            <input type="text" id="calc-display" readonly>
+            <div class="calc-grid">
+                <button onclick="calcInput('7')">7</button><button onclick="calcInput('8')">8</button><button onclick="calcInput('9')">9</button><button onclick="calcOp('/')">/</button>
+                <button onclick="calcInput('4')">4</button><button onclick="calcInput('5')">5</button><button onclick="calcInput('6')">6</button><button onclick="calcOp('*')">x</button>
+                <button onclick="calcInput('1')">1</button><button onclick="calcInput('2')">2</button><button onclick="calcInput('3')">3</button><button onclick="calcOp('-')">-</button>
+                <button onclick="calcInput('0')">0</button><button onclick="calcClear()">C</button><button onclick="calcResult()">=</button><button onclick="calcOp('+')">+</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="app-mines" class="window small game-boy-style">
+        <div class="title-bar green"><span class="title">💣 Campo Minado</span><button class="btn-close" onclick="closeWindow('app-mines')">X</button></div>
+        <div class="game-screen">
+            <div class="lcd-header">
+                <span id="mines-score">BOMBAS: 10</span>
+                <button class="btn-reset" onclick="initMinesweeper()">😐</button>
+            </div>
+            <div class="lcd-display mines-container" id="mines-grid"></div>
+        </div>
+    </div>
+
+    <div id="app-dino" class="window small game-boy-style">
+        <div class="title-bar green"><span class="title">🐱 Gatinho Run</span><button class="btn-close" onclick="closeWindow('app-dino')">X</button></div>
+        <div class="game-screen" onclick="dinoJump()">
+            <div class="lcd-display dino-container" id="dino-game-area">
+                <div id="dino">🐱</div> 
+                <div id="cactus">🌵</div>
+                <div id="game-over-msg">FIM DE JOGO</div>
+            </div>
+            <div class="lcd-header" style="justify-content: center; margin-top: 5px;">
+                <span id="dino-score">SCORE: 00000</span>
+            </div>
+            <p style="text-align: center; font-size: 0.8rem; margin: 5px 0 0;">[ESPAÇO] ou [CLIQUE] para Pular</p>
+            <button class="retro-btn small" onclick="startDino()">Iniciar / Reiniciar</button>
+        </div>
+    </div>
+
+    <div class="taskbar">
+        <div class="start-btn" onclick="toggleStartMenu()"><span class="logo-icon">💠</span> Iniciar</div>
+        
+        <div id="start-menu" class="start-menu">
+            <div class="start-header"><strong>SoftIndie</strong></div>
+            <ul class="start-list">
+                <li onclick="openWindow('win-services')">ℹ️ Sobre & Contato</li>
+                <hr>
+                <li onclick="closeStartMenu()">🚫 Desligar</li>
+            </ul>
+        </div>
+
+        <div class="taskbar-apps">
+            <div class="task-icon" title="Acesso Famous" onclick="window.location.href='repositorios.html'" style="opacity: 0.5;">👻</div>
+            <div class="task-icon" title="Calculadora" onclick="openWindow('app-calc')">🧮</div>
+            <div class="task-icon" title="Campo Minado" onclick="openWindow('app-mines'); initMinesweeper()">💣</div>
+            <div class="task-icon" title="Gatinho Run" onclick="openWindow('app-dino')">🐱</div>
+        </div>
+
+        <div class="taskbar-clock">
+            <span class="hourglass-spin">⏳</span> <span id="clock-time">00:00</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
