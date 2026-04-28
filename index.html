@@ -4,190 +4,321 @@
  * * Este código é confidencial e proprietário.
  * A cópia não autorizada deste arquivo, via qualquer meio, é estritamente proibida.
  -->
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SoftIndie </title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <title>SoftIndie | Sistema ERP de Alta Performance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #3b82f6;
+            --accent-color: #10b981;
+            --bg-light: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #f1f5f9;
+            --border-radius: 16px; /* Bordas arredondadas padronizadas */
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animações de Entrada */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            color: var(--text-light);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { color: var(--secondary-color); }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: calc(var(--border-radius) / 2);
+            transition: var(--transition-smooth);
+        }
+
+        nav a:hover {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: radial-gradient(circle at top right, #1e293b, var(--primary-color));
+            color: var(--text-light);
+            text-align: center;
+            padding: 8rem 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem auto;
+            color: #94a3b8;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background-color: #2563eb;
+            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 5%;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            transition: var(--transition-smooth);
+            border: 1px solid #f1f5f9;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary-color);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        /* Tech Section */
+        .tech-stack {
+            background-color: #f1f5f9;
+            padding: 6rem 5%;
+            text-align: center;
+        }
+
+        .tech-card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .tech-box {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border-bottom: 4px solid var(--secondary-color);
+            transition: var(--transition-smooth);
+        }
+
+        .tech-box h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .tech-box p {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* Footer & Contact */
+        footer {
+            background-color: var(--primary-color);
+            color: #94a3b8;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 40px 40px 0 0;
+        }
+
+        .contact-email {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            margin: 1.5rem 0;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-email:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-links {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a {
+            color: #475569;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover { color: white; }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            footer { border-radius: 20px 20px 0 0; }
+        }
+    </style>
 </head>
 <body>
 
-    <main class="desktop" id="desktop-area">
-        <div class="desktop-icon" onclick="openWindow('win-lua')">
-            <div class="icon-graphic globe-icon">🌎</div><span class="icon-label">Navegador_Lua</span>
-        </div>
-        <div class="desktop-icon" onclick="openWindow('win-random')">
-            <div class="icon-graphic doc-icon">📝</div><span class="icon-label">Avaliador_Random.exe</span>
-        </div>
-        <div class="desktop-icon" onclick="openWindow('win-damas')">
-            <div class="icon-graphic game-icon">🏁</div><span class="icon-label">Damas_Web.html</span>
-        </div>
-        <div class="desktop-icon" onclick="openWindow('win-kilie')">
-            <div class="icon-graphic robot-icon">🤖</div><span class="icon-label">Project_Kilie</span>
-        </div>
-        <div class="desktop-icon" onclick="openWindow('win-services')">
-            <div class="icon-graphic folder-icon">ℹ️</div><span class="icon-label">Sobre SoftIndie</span>
-        </div>
-    </main>
+    <header>
+        <div class="logo">Soft<span>Indie</span></div>
+        <nav>
+            <ul>
+                <li><a href="#recursos">Recursos</a></li>
+                <li><a href="#tecnologia">Infraestrutura</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="sticker-logo-bottom-right float-anim">
-        <div class="logo-content">
-            <img src="softindie.png" alt="Logo SoftIndie" style="width: 60px; height: auto; margin-right: 15px;">
-            <div>
-                <h1>SoftIndie</h1>
-                <p>Criado e desenvolvido por Gabriel Horakhty 2026. Todos direitos reservados.</p>
+    <section class="hero">
+        <h1>Gestão Inteligente, Segura e em Rede</h1>
+        <p>A solução ERP de última geração projetada para escalar o seu negócio com performance de nível empresarial e simplicidade indie.</p>
+        <a href="mailto:dh139afl0@mozmail.com?subject=Solicitação de Demonstração SoftIndie" class="btn">Solicitar Demonstração Grátis</a>
+    </section>
+
+    <section id="recursos" class="features">
+        <h2>Recursos que Impulsionam Resultados</h2>
+        <div class="features-grid">
+            <div class="feature-card" style="animation-delay: 0.1s;">
+                <div class="feature-icon">🧾</div>
+                <h3>Emissão de NFC-e</h3>
+                <p>Processamento em milissegundos com validação automática na SEFAZ e contingência inteligente.</p>
+            </div>
+            <div class="feature-card" style="animation-delay: 0.2s;">
+                <div class="feature-icon">⚡</div>
+                <h3>PDV Ultra-Rápido</h3>
+                <p>Interface otimizada para alto fluxo, com suporte a atalhos e funcionamento híbrido.</p>
+            </div>
+            <div class="feature-card" style="animation-delay: 0.3s;">
+                <div class="feature-icon">🛡️</div>
+                <h3>Segurança Máxima</h3>
+                <p>Criptografia de nível militar AES-256 e backups automáticos em múltiplas zonas de disponibilidade.</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div id="win-lua" class="window large">
-        <div class="title-bar blue"><span class="title">🌎 Navegador Lua</span><button class="btn-close" onclick="closeWindow('win-lua')">X</button></div>
-        <div class="window-content scrollable detail-text">
-            <h2>Projeto Experimental de Navegador Web</h2>
-            <p>O Navegador-Lua é um projeto experimental em desenvolvimento, idealizado para explorar tecnologias de renderização e interfaces gráficas. É um esforço aberto, criado com tecnologias tradicionais como <strong>C</strong>, <strong>GTK/Glade</strong> para a interface e <strong>WebKit</strong> para o motor de renderização.</p>
-            <p>O objetivo não é apenas "construir mais um navegador", mas criar um espaço de aprendizado onde ideias podem ser testadas. O projeto está licenciado sob a <strong>GNU GPL v3.0</strong>.</p>
-            <h3>✨ Destaques</h3>
-            <ul>
-                <li>Integração entre interface gráfica (GTK) e WebKit.</li>
-                <li>Estrutura em C para alta performance.</li>
-                <li>Foco em otimização para hardware limitado.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div id="win-random" class="window large">
-        <div class="title-bar orange"><span class="title">📝 Avaliador Random</span><button class="btn-close" onclick="closeWindow('win-random')">X</button></div>
-        <div class="window-content scrollable detail-text">
-            <h2>Gerador de Avaliações Automatizado</h2>
-            <p>O Avaliador-Random é uma ferramenta prática para educadores, desenvolvida em <strong>C# sobre .NET 8</strong>. O sistema permite criar bancos de questões (múltipla escolha ou dissertativas) e gerar provas completas em PDF automaticamente.</p>
-            <h3>✨ Funcionalidades</h3>
-            <ul>
-                <li>📄 Geração de PDFs profissionais prontos para impressão.</li>
-                <li>🎯 Randomização de questões para evitar "cola".</li>
-                <li>🧠 Suporte a imagens nas perguntas.</li>
-                <li>💻 Interface desktop intuitiva (WinForms).</li>
-            </ul>
-        </div>
-    </div>
-
-    <div id="win-damas" class="window large">
-        <div class="title-bar green"><span class="title">🏁 Damas em HTML</span><button class="btn-close" onclick="closeWindow('win-damas')">X</button></div>
-        <div class="window-content scrollable detail-text">
-            <h2>Jogo Completo em Arquivo Único</h2>
-            <p>O damas-html é um projeto educativo que traz um jogo completo de damas implementado em um <strong>único arquivo HTML</strong>. Sem instalações, sem dependências. Basta abrir e jogar.</p>
-            <p>Inclui uma Inteligência Artificial baseada no algoritmo <strong>Minimax com poda Alpha-Beta</strong>, oferecendo um desafio real.</p>
-            <h3>✨ Características</h3>
-            <ul>
-                <li>🕹️ Totalmente offline e portátil.</li>
-                <li>🤖 IA desafiadora ajustável.</li>
-                <li>📚 Código limpo para estudo de lógica de jogos.</li>
-            </ul>
-            <button class="retro-btn" onclick="window.location.href='repositorios.html'">Acessar Repositório</button>
-        </div>
-    </div>
-
-    <div id="win-kilie" class="window large">
-        <div class="title-bar purple"><span class="title">🤖 Projeto Kilie</span><button class="btn-close" onclick="closeWindow('win-kilie')">X</button></div>
-        <div class="window-content scrollable detail-text">
-            <h2>Robótica Acessível e Interativa</h2>
-            <p>O Kilie é um robô de mesa interativo inspirado no <em>Eilik</em>, mas construído com componentes acessíveis como <strong>ESP32</strong>, servos e displays OLED. O objetivo é trazer a "robótica emocional" para a realidade maker brasileira.</p>
-            <h3>🎯 O que ele faz?</h3>
-            <ul>
-                <li>❤️ Simula emoções (alegria, tédio, curiosidade).</li>
-                <li>👀 "Olha" e interage com o ambiente.</li>
-                <li>🎮 Possui mini-jogos integrados no visor.</li>
-                <li>⏰ Funciona como assistente (timer/alarme).</li>
-            </ul>
-            <p>Licenciado sob <strong>AGPL-3.0</strong>.</p>
-        </div>
-    </div>
-
-    <div id="win-services" class="window">
-        <div class="title-bar"><span class="title">ℹ️ Sobre SoftIndie</span><button class="btn-close" onclick="closeWindow('win-services')">X</button></div>
-        <div class="window-content detail-text" style="text-align: center;">
-            <img src="softindie.png" alt="Logo SoftIndie" style="max-width: 150px; margin-bottom: 15px;">
-            <h2>SoftIndie</h2>
-            <p>Desenvolvimento de software independente.</p>
-            <p><strong>Contato Oficial:</strong></p>
-            <div style="background: #e0e0e0; padding: 10px; border-radius: 5px; font-family: 'VT323', monospace; font-size: 1.2rem;">
-                <a href="mailto:gabriel@softindie.com" style="color: #333; text-decoration: none;">gabriel@softindie.com</a>
-            </div>
-            <button class="retro-btn" onclick="closeWindow('win-services')">Fechar</button>
-        </div>
-    </div>
-
-    <div id="app-calc" class="window small">
-        <div class="title-bar"><span class="title">🧮 Calc</span><button class="btn-close" onclick="closeWindow('app-calc')">X</button></div>
-        <div class="calc-body">
-            <input type="text" id="calc-display" readonly>
-            <div class="calc-grid">
-                <button onclick="calcInput('7')">7</button><button onclick="calcInput('8')">8</button><button onclick="calcInput('9')">9</button><button onclick="calcOp('/')">/</button>
-                <button onclick="calcInput('4')">4</button><button onclick="calcInput('5')">5</button><button onclick="calcInput('6')">6</button><button onclick="calcOp('*')">x</button>
-                <button onclick="calcInput('1')">1</button><button onclick="calcInput('2')">2</button><button onclick="calcInput('3')">3</button><button onclick="calcOp('-')">-</button>
-                <button onclick="calcInput('0')">0</button><button onclick="calcClear()">C</button><button onclick="calcResult()">=</button><button onclick="calcOp('+')">+</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="app-mines" class="window small game-boy-style">
-    <div class="title-bar green"><span class="title">💣 Campo Minado</span><button class="btn-close" onclick="closeWindow('app-mines')">X</button></div>
-    <div class="game-screen">
-        <div class="lcd-header">
-            <span id="mines-score">BOMBAS: 10</span>
-            <button class="btn-reset" onclick="initMinesweeper()">😐</button>
-        </div>
+    <section id="tecnologia" class="tech-stack">
+        <h2>Engenharia de Software de Classe Mundial</h2>
+        <p style="max-width: 800px; margin: 0 auto;">Utilizamos as stacks mais estáveis e seguras do planeta para garantir que seu negócio nunca pare.</p>
         
-        <button id="btn-flag-mode" onclick="toggleFlagMode()" style="width: 100%; margin-bottom: 5px; cursor: pointer; border: 1px solid #333; font-family: 'VT323';">
-            🚩 Modo Bandeira: OFF
-        </button>
-        
-        <div class="lcd-display mines-container" id="mines-grid"></div>
-    </div>
-</div>
-
-    <div id="app-dino" class="window small game-boy-style">
-        <div class="title-bar green"><span class="title">🐱 Gatinho Run</span><button class="btn-close" onclick="closeWindow('app-dino')">X</button></div>
-        <div class="game-screen" onclick="dinoJump()">
-            <div class="lcd-display dino-container" id="dino-game-area">
-                <div id="dino">🐱</div> 
-                <div id="cactus">🌵</div>
-                <div id="game-over-msg">FIM DE JOGO</div>
+        <div class="tech-card-container">
+            <div class="tech-box">
+                <h4>Nível de Kernel</h4>
+                <p>Base operacional em sistemas POSIX-compliant (Linux e BSD) para estabilidade inabalável.</p>
             </div>
-            <div class="lcd-header" style="justify-content: center; margin-top: 5px;">
-                <span id="dino-score">SCORE: 00000</span>
+            <div class="tech-box">
+                <h4>Conectividade</h4>
+                <p>Infraestrutura em rede resiliente que permite acesso global com latência mínima.</p>
             </div>
-            <p style="text-align: center; font-size: 0.8rem; margin: 5px 0 0;">[ESPAÇO] ou [CLIQUE] para Pular</p>
-            <button class="retro-btn small" onclick="startDino()">Iniciar / Reiniciar</button>
+            <div class="tech-box">
+                <h4>Privacidade</h4>
+                <p>Separação lógica de dados e protocolos de criptografia em todas as camadas do banco de dados.</p>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div class="taskbar">
-        <div class="start-btn" onclick="toggleStartMenu()"><span class="logo-icon">💠</span> Iniciar</div>
+    <footer id="contato">
+        <h3>Pronto para transformar sua gestão?</h3>
+        <p>Fale diretamente com nossos especialistas:</p>
+        <a href="mailto:dh139afl0@mozmail.com" class="contact-email">dh139afl0@mozmail.com</a>
         
-        <div id="start-menu" class="start-menu">
-            <div class="start-header"><strong>SoftIndie</strong></div>
-            <ul class="start-list">
-                <li onclick="openWindow('win-services')">ℹ️ Sobre & Contato</li>
-                <hr>
-                <li onclick="closeStartMenu()">🚫 Desligar</li>
-            </ul>
+        <p>&copy; 2026 SoftIndie. Tecnologia para quem pensa grande.</p>
+        
+        <div class="footer-links">
+            <a href="https://softindie.com" target="_blank">softindie.com</a> 
+            <a href="https://softindie.online" target="_blank">softindie.online</a> 
+            <a href="https://softindie.store" target="_blank">softindie.store</a>
         </div>
+    </footer>
 
-        <div class="taskbar-apps">
-            <div class="task-icon" title="Acesso Famous" onclick="window.location.href='repositorios.html'" style="opacity: 0.5;">👻</div>
-            <div class="task-icon" title="Calculadora" onclick="openWindow('app-calc')">🧮</div>
-            <div class="task-icon" title="Campo Minado" onclick="openWindow('app-mines'); initMinesweeper()">💣</div>
-            <div class="task-icon" title="Gatinho Run" onclick="openWindow('app-dino')">🐱</div>
-        </div>
-
-        <div class="taskbar-clock">
-            <span class="hourglass-spin">⏳</span> <span id="clock-time">00:00</span>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
