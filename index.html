@@ -307,6 +307,35 @@
         </div>
     </section>
 
+<style>
+        .video-destaque {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .video-loop {
+            width: 100%;
+            max-width: 45%;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+        }
+        @media (max-width: 768px) {
+            .video-loop { max-width: 90%; }
+        }
+    </style>
+
+<div class="video-destaque">
+    <video autoplay loop muted playsinline class="video-loop">
+        <source src="videos/video1.mp4" type="video/mp4">
+    </video>
+    <video autoplay loop muted playsinline class="video-loop">
+        <source src="videos/video2.mp4" type="video/mp4">
+    </video>
+</div>
+
     <section id="projetos" class="features" style="background-color: white;">
         <h2>Projetos em Desenvolvimento</h2>
         <p style="max-width: 800px; margin: 0 auto;">Inovação contínua. Conheça as nossas mais recentes pesquisas em sistemas embarcados e IoT.</p>
